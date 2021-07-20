@@ -1,6 +1,9 @@
 # AsciiArt
 
-This takes static images and gifs and converts them into Ascii to be displayed in the terminal.
+## This takes static images and gifs and converts them into Ascii to be displayed in the terminal.
+
+
+
 
 
 Usage: ascii_art.py [-h] --image IMAGE [--dimensions [DIMENSIONS]] [--outfile OUTFILE] [--characters CHARACTERS] [--reverse [REVERSE]]
