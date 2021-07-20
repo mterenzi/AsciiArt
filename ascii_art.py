@@ -85,6 +85,8 @@ def single_image(args, img):
 	img, dimensions = convert_image(img, args['dimensions'])
 	terminal = convert_ascii(img)
 	print_terminal(terminal, args['outfile'])
+	
+	return dimensions
 
 
 def multi_image(args, img):
@@ -98,7 +100,7 @@ def multi_image(args, img):
 			os.system('clear')
 
 		print_terminal(terminal, args['outfile'])
-		
+
 	return dimensions
 
 
