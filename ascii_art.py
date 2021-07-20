@@ -81,6 +81,27 @@ def print_terminal(terminal, outfile):
 		file.close()
 
 
+def single_image(args, img):
+	img, dimensions = convert_image(img, args['dimensions'])
+	terminal = convert_ascii(img)
+	print_terminal(terminal, args['outfile'])
+
+
+def multi_image(args, img):
+	for img in ImageSequence.Iterator(img):
+		img, dimensions = convert_image(img, args['dimensions'])
+		terminal = convert_ascii(img)
+		
+		if os.name == 'nt':
+			os.system('cls')
+		else:
+			os.system('clear')
+
+		print_terminal(terminal, args['outfile'])
+		
+	return dimensions
+
+
 
 if __name__ == '__main__':
 	args = parse_args()
@@ -93,21 +114,12 @@ if __name__ == '__main__':
 		characters.reverse()
 
 	with Image.open(args['image']) as img:
-		if img.is_animated:
-			for img in ImageSequence.Iterator(img):
-				img, dimensions = convert_image(img, args['dimensions'])
-				terminal = convert_ascii(img)
-				
-				if os.name == 'nt':
-					os.system('cls')
-				else:
-					os.system('clear')
-
-				print_terminal(terminal, args['outfile'])
-		else:
-			img, dimensions = convert_image(img, args['dimensions'])
-			terminal = convert_ascii(img)
-			print_terminal(terminal, args['outfile'])
-
-
+		try:
+			if img.is_animated:
+				multi_image(args, img)
+			else:
+				dimensions = single_image(args, img)
+		except AttributeError:
+			dimensions = single_image(args, img)
+	
 	print('Output Dimensions: ', dimensions)
