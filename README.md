@@ -1,6 +1,6 @@
 # AsciiArt
 
-## This takes static images and gifs and converts them into Ascii to be displayed in the terminal.
+## This takes static images or gifs and converts them into Ascii to be displayed in the terminal.
 
 
 
@@ -37,5 +37,4 @@ optional arguments:
       Reverse character set. Darkest values are now lightest and vice versa.
   
   
-  
-Some sample images with questionable redistribution legality
+  `python .\ascii_art.py --image .\python.png`
