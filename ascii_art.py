@@ -19,7 +19,7 @@ def parse_args():
 						help='Path to an output file. Overwrites file location')
 	parser.add_argument('--characters', type=str, default=None, required=False,
 						help='Custom character set. Ordered from darkest to lightest\
-							Ex. "@,!,$"')
+							Ex. "@!$"')
 	parser.add_argument('--reverse', type=bool, default=False, required=False,
 						nargs='?', const='True',
 						help='Reverse character set. Darkest values are now lightest\
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 	if not args['characters']:
 		characters = [' ', '*', '~', '!', '|', '[', ']', '(', ')', '?', '%', '&', '$', '#', '@']
 	else:
-		characters = args['characters'].split(',')
+		characters = list(args['characters'])
 
 	if args['reverse']:
 		characters.reverse()
