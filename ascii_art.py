@@ -108,7 +108,7 @@ def multi_image(args, img):
 if __name__ == '__main__':
 	args = parse_args()
 	if not args['characters']:
-		characters = [' ', '*', '~', '!', '|', '[', ']', '(', ')', '?', '%', '&', '$', '#', '@']
+		characters = list(".'`^,:;!><~+_-?][}{)(|\\/*#&%@$")
 	else:
 		characters = list(args['characters'])
 
